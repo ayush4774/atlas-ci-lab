@@ -1,4 +1,4 @@
-name: CI
+name: CI.YML
 
 on: [push, pull_request]
 
@@ -13,7 +13,7 @@ jobs:
           node-version: '20'
       - name: Install dependencies
         run: npm install
-      name: Run tests
+      - name: Run test
         run: npm test
 
   deploy-check:
@@ -21,6 +21,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Deploy
-        run: echo "Deploying with token $APP_TOKEN"
+      - run: echo "Deploying with token $APP_TOKEN"
         env:
-          APP_TOKEN: ${{ secrets.APP_TOK }}
+          APP_TOKEN: ${{ secrets.APP_TOKEN }}
